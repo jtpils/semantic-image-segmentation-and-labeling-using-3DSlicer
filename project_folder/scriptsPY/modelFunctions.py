@@ -356,7 +356,7 @@ def train(epoch, model, optimizer, train_loader, cuda_available, wtperclass):
         if cuda_available:
             image, labels = image.cuda(), labels.cuda()
         
-        loss0 = lossfunc(pred0,labels,image,wtperclass,alpha=0.95)
+        loss0 = lossfunc(pred0, labels, image, wtperclass,alpha=0.95)
 
         loss0.backward()
         optimizer.step()

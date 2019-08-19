@@ -84,6 +84,9 @@ labels_path = os.path.join(project_path, "temp/labels")
 ## the temp folder.  
 training_path = os.path.join(project_path, "temp/training")
 
+## Saving model parameters to here
+model_path = os.path.join(project_path, "temp")
+
 ## folder where python scripts with the model and slicer manipulation are saved. 
 scripts_path = os.path.join(project_path, "scriptsPy")
 

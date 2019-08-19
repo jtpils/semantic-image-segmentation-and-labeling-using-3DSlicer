@@ -18,7 +18,6 @@ transformationsValid = Transformations()
 transformationsValid.add(CropValid((256,256)))
 # transformations.add(my_transforms.RandomBrightness(prob=0.5, limit=(-0.15, 0.15)))
 
-
 ## define the number of classes 
 n_classes = 3
 
@@ -32,6 +31,13 @@ test_loader = DataLoader(test_set, batch_size=1, shuffle=False)
 
 model = StackedUnet()
 optimizer = optim.Adam(model.parameters(), lr=1e-4)
+
+
+if os.path.isfile(model_path):
+## load in saved weights if the model was run before. 
+    model.load_state_dict(torch.load(os.path.join(model_path, "model.pth")))
+    optimizer.load_state_dict(torch.load(os.path.join(model_path, "optim.pth")))
+
 is_cuda_available = torch.cuda.is_available()
 
 ## weights 
