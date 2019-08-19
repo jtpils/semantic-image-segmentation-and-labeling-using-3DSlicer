@@ -33,9 +33,11 @@ model = StackedUnet()
 optimizer = optim.Adam(model.parameters(), lr=1e-4)
 
 
-if os.path.isfile(model_path):
+if os.path.isfile(os.path.join(model_path, "model.pth")):
 ## load in saved weights if the model was run before. 
     model.load_state_dict(torch.load(os.path.join(model_path, "model.pth")))
+
+if os.path.isfile(os.path.join(os.path.join(model_path, "optim.pth"))): 
     optimizer.load_state_dict(torch.load(os.path.join(model_path, "optim.pth")))
 
 is_cuda_available = torch.cuda.is_available()
